@@ -56,7 +56,7 @@ export default function SendUpdatePage() {
     <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl shadow-xl overflow-hidden">
       <Image src={'/logo.png'} alt="Logo" width={100} height={100} className="object-contain" />
     </div>
-    <h1 className="text-4xl font-bold text-gray-900">Daily Update</h1>
+    <h1 className="text-4xl font-bold text-gray-900">Daily Updates</h1>
   </div>
   <p className="text-gray-600 flex items-center justify-center gap-2">
     <Calendar className="w-4 h-4" />
@@ -89,7 +89,7 @@ export default function SendUpdatePage() {
           <div className="space-y-2 text-black">
             <label className="flex items-center gap-2 text-sm font-semibold text-gray-700">
               <CheckCircle2 className="w-4 h-4 text-green-500" />
-              Today's Progress
+              Today&apos;s Progress
             </label>
             <div className="relative">
               <textarea
