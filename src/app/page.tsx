@@ -1,17 +1,22 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Loader2, CheckCircle2, XCircle, Send, Calendar, Briefcase, User } from "lucide-react"
 import Image from "next/image"
 
 export default function SendUpdatePage() {
-  const [name, setName] = useState(localStorage.getItem('name') || "Abdul Moiz")
+  const [name, setName] = useState("Abdul Moiz")
   const [project, setProject] = useState("")
   const [progress, setProgress] = useState("")
   const [loading, setLoading] = useState(false)
   const [toast, setToast] = useState<{ message: string; success: boolean } | null>(null)
 
+
+  useEffect(()=>{
+    const naam=localStorage.getItem('name') 
+    if(naam) setName(naam)
+  },[])
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
