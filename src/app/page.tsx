@@ -6,7 +6,7 @@ import { Loader2, CheckCircle2, XCircle, Send, Calendar, Briefcase, User } from 
 import Image from "next/image"
 
 export default function SendUpdatePage() {
-  const [name, setName] = useState("Abdul Moiz")
+  const [name, setName] = useState(localStorage.getItem('name') || "Abdul Moiz")
   const [project, setProject] = useState("")
   const [progress, setProgress] = useState("")
   const [loading, setLoading] = useState(false)
@@ -27,7 +27,8 @@ export default function SendUpdatePage() {
 
     if (res.ok) {
       setToast({ message: "Update sent successfully!", success: true })
-     // setName("Abdul Moiz")
+      localStorage.setItem("name",name)
+     setName(name)
       setProject("")
       setProgress("")
       setTimeout(() => setToast(null), 3000)
