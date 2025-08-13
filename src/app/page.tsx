@@ -2,11 +2,11 @@
 
 import type React from "react"
 import { useState } from "react"
-import { Loader2, CheckCircle2, XCircle, Send, Calendar, Briefcase } from "lucide-react"
+import { Loader2, CheckCircle2, XCircle, Send, Calendar, Briefcase, User } from "lucide-react"
 import Image from "next/image"
 
-
 export default function SendUpdatePage() {
+  const [name, setName] = useState("Abdul Moiz")
   const [project, setProject] = useState("")
   const [progress, setProgress] = useState("")
   const [loading, setLoading] = useState(false)
@@ -20,13 +20,14 @@ export default function SendUpdatePage() {
     const res = await fetch("/api/send-update", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ project, progress }),
+      body: JSON.stringify({ name, project, progress }),
     })
 
     setLoading(false)
 
     if (res.ok) {
       setToast({ message: "Update sent successfully!", success: true })
+     // setName("Abdul Moiz")
       setProject("")
       setProgress("")
       setTimeout(() => setToast(null), 3000)
@@ -51,24 +52,39 @@ export default function SendUpdatePage() {
       </div>
 
       <div className="relative w-full max-w-lg">
-      <div className="text-center mb-8">
-  <div className="flex items-center justify-center gap-4 mb-2">
-    <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl shadow-xl overflow-hidden">
-      <Image src={'/logo.png'} alt="Logo" width={100} height={100} className="object-contain" />
-    </div>
-    <h1 className="text-4xl font-bold text-gray-900">Daily Updates</h1>
-  </div>
-  <p className="text-gray-600 flex items-center justify-center gap-2">
-    <Calendar className="w-4 h-4" />
-    {today}
-  </p>
-</div>
-
+        <div className="text-center mb-8">
+          <div className="flex items-center justify-center gap-4 mb-2">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl shadow-xl overflow-hidden">
+              <Image src={"/logo.png"} alt="Logo" width={100} height={100} className="object-contain" />
+            </div>
+            <h1 className="text-4xl font-bold text-gray-900">Daily Updates</h1>
+          </div>
+          <p className="text-gray-600 flex items-center justify-center gap-2">
+            <Calendar className="w-4 h-4" />
+            {today}
+          </p>
+        </div>
 
         <form
           onSubmit={handleSubmit}
           className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 p-8 space-y-6 transition-all duration-300 hover:shadow-3xl"
         >
+          <div className="space-y-2 text-black">
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-700">
+              <User className="w-4 h-4 text-purple-500" />
+              Name
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-3 text-sm placeholder-gray-400 focus:bg-white focus:border-blue-400 focus:ring-4 focus:ring-blue-100 outline-none transition-all duration-200"
+                required
+              />
+            </div>
+          </div>
+
           <div className="space-y-2 text-black">
             <label className="flex items-center gap-2 text-sm font-semibold text-gray-700">
               <Briefcase className="w-4 h-4 text-blue-500" />
@@ -81,7 +97,6 @@ export default function SendUpdatePage() {
                 onChange={(e) => setProject(e.target.value)}
                 placeholder="e.g. Hygieia, Dashboard Redesign..."
                 className="w-full bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-3 text-sm placeholder-gray-400 focus:bg-white focus:border-blue-400 focus:ring-4 focus:ring-blue-100 outline-none transition-all duration-200"
-               
               />
             </div>
           </div>
@@ -106,7 +121,7 @@ export default function SendUpdatePage() {
 
           <button
             type="submit"
-            disabled={loading ||  !progress.trim()}
+            disabled={loading || !progress.trim()}
             className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 disabled:from-gray-300 disabled:to-gray-400 text-white font-semibold py-3 px-6 rounded-xl flex justify-center items-center gap-2 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
           >
             {loading ? (

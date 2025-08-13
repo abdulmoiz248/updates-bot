@@ -32,7 +32,7 @@ async function summarizeWithGemini(progressText: string): Promise<string | null>
 
 export async function POST(req: NextRequest) {
   try {
-    const { progress, project } = await req.json()
+    const { progress, project,name } = await req.json()
 
     if (!progress) {
       return NextResponse.json({ error: 'Missing progress' }, { status: 400 })
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
       day: 'numeric',
     })
 
-    const name = 'Abdul Moiz'
+   // const name = 'Abdul Moiz'
     const workingOn = project ? `💼 **Working On:** ${project}\n\n` : ''
 
     const payload = {
