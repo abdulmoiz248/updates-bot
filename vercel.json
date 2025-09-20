@@ -1,13 +1,15 @@
 {
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "vercel-node@3"
-    }
-  },
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
   "crons": [
     {
       "path": "/api/run-daily-updates",
       "schedule": "0 15 * * 1-5"
     }
-  ]
+  ],
+  "functions": {
+    "api/**/*.ts": {
+      "maxDuration": 60
+    }
+  }
 }
