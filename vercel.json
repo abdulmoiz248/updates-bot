@@ -1,7 +1,7 @@
 {
   "functions": {
-    "api/run-daily-updates.ts": {
-      "runtime": "nodejs18.x"
+    "api/**/*.ts": {
+      "runtime": "vercel-node@3"
     }
   },
   "crons": [
