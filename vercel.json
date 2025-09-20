@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "api/run-daily-updates.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/run-daily-updates",
+      "schedule": "0 15 * * 1-5"
+    }
+  ]
+}
