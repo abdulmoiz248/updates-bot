@@ -3,6 +3,7 @@
 import type React from "react"
 import { useState } from "react"
 import { Loader2, CheckCircle2, XCircle, Send, Mail, User, KeyRound, Github } from "lucide-react"
+import Image from "next/image"
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("")
@@ -43,9 +44,17 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex flex-col items-center justify-center p-4">
       <div className="relative w-full max-w-lg">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900">Register</h1>
-          <p className="text-gray-600">Enter your details to get started</p>
+       
+         <div className="text-center mb-8">
+          <div className="flex items-center justify-center gap-4 mb-2">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl shadow-xl overflow-hidden">
+              <Image src={"/logo.png"} alt="Logo" width={100} height={100} className="object-contain" />
+            </div>
+            <h1 className="text-4xl font-bold text-gray-900">Register</h1>
+          </div>
+          <p className="text-gray-600 flex items-center justify-center gap-2">
+           Enter your details to get started
+          </p>
         </div>
 
         <form
@@ -60,6 +69,7 @@ export default function RegisterPage() {
             <input
               type="email"
               value={email}
+              placeholder="Enter your email"
               onChange={(e) => setEmail(e.target.value)}
               className="w-full bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-3 text-sm placeholder-gray-400 focus:bg-white focus:border-blue-400 focus:ring-4 focus:ring-blue-100 outline-none transition-all duration-200"
               required
@@ -73,6 +83,7 @@ export default function RegisterPage() {
             </label>
             <input
               type="text"
+              placeholder="Enter your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-3 text-sm placeholder-gray-400 focus:bg-white focus:border-blue-400 focus:ring-4 focus:ring-blue-100 outline-none transition-all duration-200"

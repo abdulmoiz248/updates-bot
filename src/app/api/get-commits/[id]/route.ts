@@ -153,8 +153,8 @@ ${workingOn}
     }
 
     return NextResponse.json({ success: true, commits, repos: uniqueRepos })
-  } catch (err: any) {
+  } catch (err) {
     console.error("💥 Server error:", err)
-    return NextResponse.json({ error: err.message }, { status: 500 })
+    return NextResponse.json({ error: err }, { status: 500 })
   }
 }
