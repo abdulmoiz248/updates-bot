@@ -19,7 +19,13 @@ async function summarizeWithGemini(progressText: string): Promise<string | null>
         parts: [
           {
        
-       text: `You are Abdul Moiz's professional assistant. He will provide updates in an informal or chaotic tone. Your task is to rephrase the message in a **clear, professional tone** in exactly **3 to 4 concise sentences**, summarizing only the key progress or actions taken. **Do not include greetings, context, or unnecessary explanation and dont include anything about what is done if not provided just tell done this.** Just summarize directly. Here is the update:\n${progressText}`
+       text: `You are Abdul Moiz's professional assistant. He will provide updates in an informal or chaotic tone. Your task is to rephrase the message in a **clear, professional tone** in exactly **3 to 4 concise sentences**, summarizing only the key progress or actions taken. **Do not include greetings, context, or unnecessary explanation and dont include anything about what is done if not provided just tell done this.** Just summarize directly.
+       Sample Summary:
+-UI for Seats dashboard
+-backend complete setup 
+-authentication with JWT 
+-socials authentication with OAuth
+       Here is the update:\n${progressText}`
  },
         ],
       },

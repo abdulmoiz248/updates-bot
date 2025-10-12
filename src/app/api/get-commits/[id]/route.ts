@@ -27,6 +27,14 @@ async function summarizeWithGemini(progressText: string, geminiKey: string): Pro
 - Output 3–5 sentences max. 
 - Do not mention "commits", "repository", "test commit", or "bot validation". 
 - Just describe the actual work done and outcomes as if Abdul himself is explaining.
+Sample Summary:
+
+-UI for Seats dashboard
+-backend complete setup 
+-authentication with JWT 
+-socials authentication with OAuth
+
+
 
 Here are the updates to base the report on:
 ${progressText}`,
